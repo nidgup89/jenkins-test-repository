@@ -14,7 +14,7 @@ pipeline
         {
             parallel()
             {
-                stage('Build A for Windows')
+                stage('Build A')
                 {
                     agent { label "kosipipelineexecutor" }
                     stages
@@ -31,18 +31,11 @@ pipeline
                             steps
                             {
                                 echo "${STAGE_NAME}"                                
-                            }
-                        }
-                        stage('Deploy')
-                        {
-                            steps
-                            {
-                                echo "${STAGE_NAME}"
                             }
                         }
                     }
                 }
-                stage('Build B for Linux')
+                stage('Build B')
                 {
                     agent { label "kosipipelineexecutor" }
                     stages
@@ -59,18 +52,11 @@ pipeline
                             steps
                             {
                                 echo "${STAGE_NAME}"                                
-                            }
-                        }
-                        stage('Deploy')
-                        {
-                            steps
-                            {
-                                echo "${STAGE_NAME}"
                             }
                         }
                     }
                 }
-                stage('Build C for Appl-Mac')
+                stage('Build C')
                 {
                     agent { label "kosipipelineexecutor" }
                     stages
@@ -87,20 +73,13 @@ pipeline
                             steps
                             {
                                 echo "${STAGE_NAME}"                                
-                            }
-                        }
-                        stage('Deploy')
-                        {
-                            steps
-                            {
-                                echo "${STAGE_NAME}"
                             }
                         }
                     }
                 }
             }
         }
-        stage('Promote')
+        stage('Deploy')
         {
             steps
             {
